@@ -105,7 +105,7 @@ function faq_style_simple($items) {
 	$item_number = 1;
 	foreach ($items as $item) {
 		$output .= '<li class="simple-faq-item simple-faq-number-'.$item_number.'">';
-		$output .= $item['title'];
+		$output .= '<h3>' . $item['title'] . '</h3>';
 		$output .= '<br />' . $item['content'] . '</li>';
 		$item_number++;
 	}
@@ -130,9 +130,9 @@ function faq_style_bookmarks($items) {
 	//For the actual FAQ content below
 	$item_number = 1; //Reset item counter
 	foreach ($items as $item) {
-		$output .= '<a id="simple-faq-item-' . $item_number . '"><h4 class="simple-faq-item simple-faq-item-number-' .$item_number.'">';
+		$output .= '<a id="simple-faq-item-' . $item_number . '"><h3 class="simple-faq-item simple-faq-item-number-' .$item_number.'">';
 		$output .= $item['title'];
-		$output .= '</h4></a>';
+		$output .= '</h3></a>';
 		$output .= $item['content'];
 		$item_number++;		
 	}
