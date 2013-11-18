@@ -3,7 +3,7 @@
  * Plugin Name: Simple FAQs
  * Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
  * Description: FAQ plugin to allow creating and showing FAQ easily on Wordpress website
- * Version: The Plugin's Version Number, e.g.: 1.0
+ * Version: 1.0
  * Author: Waqas Ahmed
  * Author URI: http://speedsoftsol.com
  * License: GPL2
