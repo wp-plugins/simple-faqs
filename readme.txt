@@ -18,6 +18,9 @@ Options available are:
 <li>Simple (just list each answer below that question)</li>
 <li>Bookmarks (show the questions at the top and lead to the related answer below)</li>
 </ol>
+
+Details and examples about using the plugin are available at <a href="speedsoftsol.com/simple-faq-plugin/" target="_blank">speedsoftsol.com/simple-faq-plugin/</a>
+
 == Installation ==
 1. Upload zip archive `simple-faq.zip` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
