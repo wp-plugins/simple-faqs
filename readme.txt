@@ -3,7 +3,7 @@ Contributors: speedito
 Tags: FAQ listing
 Requires at least: 3.7.1
 Tested up to: 3.7.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,3 +37,6 @@ Initial launch
 
 = 1.1 =
 Reset Post Data To avoid conflict with Theme Queries
+
+= 1.1.1
+Show all FAQ without pagination

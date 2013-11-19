@@ -3,7 +3,7 @@
  * Plugin Name: Simple FAQs
  * Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
  * Description: FAQ plugin to allow creating and showing FAQ easily on Wordpress website
- * Version: 1.1
+ * Version: 1.1.1
  * Author: Waqas Ahmed
  * Author URI: http://speedsoftsol.com
  * License: GPL2
@@ -68,7 +68,8 @@ function get_requested_faqs ($parameter) {
 		$args = array (
 			'post_type' => 'simple-faqs',
 			'orderby' => 'menu_order',
-			'order'	=> 'ASC'
+			'order'	=> 'ASC',
+			'posts_per_page' => -1
 			);
 	}
 	else {
@@ -76,6 +77,7 @@ function get_requested_faqs ($parameter) {
 			'post_type' => 'simple-faqs',
 			'orderby' => 'menu_order',
 			'order'	=> 'ASC',
+			'posts_per_page' => -1,
 			'tax_query' => array (
 				array(
 					'taxonomy' => 'faq_category',
