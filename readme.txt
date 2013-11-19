@@ -3,7 +3,7 @@ Contributors: speedito
 Tags: FAQ listing
 Requires at least: 3.7.1
 Tested up to: 3.7.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,3 +34,6 @@ Details and examples about using the plugin are available at <a href="http://spe
 
 = 1.0 =
 Initial launch
+
+= 1.1 =
+Reset Post Data To avoid conflict with Theme Queries
