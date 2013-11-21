@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Simple FAQs
- * Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
+ * Plugin URI: http://wordpress.org/plugins/simple-faqs/
  * Description: FAQ plugin to allow creating and showing FAQ easily on Wordpress website
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Waqas Ahmed
  * Author URI: http://speedsoftsol.com
  * License: GPL2
@@ -119,7 +119,7 @@ function faq_style_simple($items) {
 
 function faq_style_bookmarks($items) {
 	$item_number = 1;
-	$output = '';
+	$output = '<a id="simple-faq-top"></a>';
 	
 	//For the top bookmark list
 	foreach ($items as $item) {
@@ -137,6 +137,7 @@ function faq_style_bookmarks($items) {
 		$output .= $item['title'];
 		$output .= '</h3></a>';
 		$output .= $item['content'];
+		$output .= '<br /><a class="simple-faq-back" href="#simple-faq-top">Back To Top</a>';
 		$item_number++;		
 	}
 	$output .= '</div>';
