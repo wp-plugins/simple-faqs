@@ -2,8 +2,8 @@
 Contributors: speedito
 Tags: FAQ listing
 Requires at least: 3.7.1
-Tested up to: 3.7.1
-Stable tag: 1.1.2
+Tested up to: 3.8
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Options available are:
 <ol>
 <li>Accordion (the default option)</li>
 <li>Simple (just list each answer below that question)</li>
-<li>Bookmarks (show the questions at the top and lead to the related answer below)</li>
+<li>Bookmarks (show the questions at the top and lead to the related answer below) - now implements scrolling via LocalScroll jQuery plugin</li>
 </ol>
 
 Details and examples about using the plugin are available at <a href="http://speedsoftsol.com/simple-faq-plugin/" target="_blank">speedsoftsol.com/simple-faq-plugin/</a>
@@ -43,3 +43,6 @@ Show all FAQ without pagination
 
 = 1.1.2 =
 Add Back To Top feature for Bookmark Style
+
+= 1.1.3 =
+Add smooth scrolling feature for Bookmark Style FAQ
