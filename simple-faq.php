@@ -118,6 +118,22 @@ function faq_style_simple($items) {
 
 
 function faq_style_bookmarks($items) {
+	wp_register_script( 'simple-faq-smooth-scroll', plugins_url( '/jquery.scrollTo-min.js', __FILE__ ) );
+	wp_enqueue_script('simple-faq-smooth-scroll');
+	wp_register_script( 'simple-faq-smooth-scroll-local', plugins_url( '/jquery.localScroll.min.js', __FILE__ ) );
+	wp_enqueue_script('simple-faq-smooth-scroll-local');
+
+
+	echo "<script>
+	jQuery(document).ready(function($){
+		$.localScroll({
+			queue:true,
+			duration:1000,
+			hash:true
+		});
+	});
+	</script>";
+
 	$item_number = 1;
 	$output = '<a id="simple-faq-top"></a>';
 	
