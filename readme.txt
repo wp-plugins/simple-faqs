@@ -46,3 +46,6 @@ Add Back To Top feature for Bookmark Style
 
 = 1.1.3 =
 Add smooth scrolling feature for Bookmark Style FAQ
+
+= 1.1.4 =
+Sort out SVN issue
