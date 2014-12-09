@@ -3,14 +3,36 @@
  * Plugin Name: Simple FAQs
  * Plugin URI: http://wordpress.org/plugins/simple-faqs/
  * Description: FAQ plugin to allow creating and showing FAQ easily on Wordpress website
- * Version: 1.1.5
+ * Version: 2.0
  * Author: Waqas Ahmed
  * Author URI: http://speedsoftsol.com
  * License: GPL2
  */
 
 
+/** Add new button in TinyMCE Editor and associate a generator **/
+add_action('admin_head', 'simple_faq_button');
+function simple_faq_button() {
+	add_filter("mce_external_plugins", "simple_faq_add_editor_button_script");
+	add_filter('mce_buttons', 'simple_faq_button_register');
+}
 
+function simple_faq_add_editor_button_script($plugin_array) {
+   	$plugin_array['simple_faq_button'] = plugins_url( '/simple_faq_button.js', __FILE__ );
+   	return $plugin_array;
+}
+
+function simple_faq_button_register($buttons) {
+   array_push($buttons, "faq_button");
+   return $buttons;
+}
+
+function simple_faq_admin_styles() {
+	wp_enqueue_style('simple-faq-admin', plugins_url('/simple_faq_generator.css', __FILE__));
+}
+add_action('admin_enqueue_scripts', 'simple_faq_admin_styles');
+
+ 
 /** Registering the Custom Post Types and the taxonomy at initialization **/
 add_action( 'init', 'create_simple_faq_taxonomy', 0 );
 function create_simple_faq_taxonomy() {	
@@ -40,12 +62,22 @@ function render_faqs( $atts ) {
 	$parameter = extract( shortcode_atts( array(
 		'category' => 'all',
 		'style' => 'accordion',
+		'skin' => 'none',
+		'order' => 'default'
 	), $atts ) );
 
-	$items = get_requested_faqs($category);
+	$simple_faq_skin = strtolower($skin);
+	if (isset($simple_faq_skin) && $simple_faq_skin != "none") {
+		if ($simple_faq_skin == "dark") {
+			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/dark.css', __FILE__ )  );
+		}
+		elseif ($simple_faq_skin == "light") {
+			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/light.css', __FILE__ )  );
+		}
+	}
+	$items = get_requested_faqs($category, $order);
 	switch (strtolower($style)) {
 		case "accordion":
-			add_action ('wp_head', 'initialize_accordion');
 			$output = faq_style_accordion($items);
 			break;
 		case "simple":
@@ -55,19 +87,37 @@ function render_faqs( $atts ) {
 			$output = faq_style_bookmarks($items);
 			break;
 		default:
-			add_action ('wp_head', 'initialize_accordion');
 			$output = faq_style_accordion($items);
 	}
-	return $output;
+	return do_shortcode($output);
 }
 add_shortcode( 'simple-faq', 'render_faqs' );
 
 
-function get_requested_faqs ($parameter) {
-	if ($parameter == 'all') {
+// Get all the FAQ you want - and in the correct order
+function get_requested_faqs ($category, $order) {
+	
+	/** Possible order options are
+		default, name, date
+	**/
+	switch (strtolower($order)) {
+		case "default":
+			$orderby = 'menu_order';
+			break;
+		case "date":
+			$orderby = 'date';
+			break;
+		case "alphabetical":
+			$orderby = 'name';
+			break;
+		default:
+			$orderby = 'menu_order';
+	}
+	$category = strtolower($category);
+	if ($category == 'all') {
 		$args = array (
 			'post_type' => 'simple-faqs',
-			'orderby' => 'menu_order',
+			'orderby' => $orderby,
 			'order'	=> 'ASC',
 			'posts_per_page' => -1
 			);
@@ -75,14 +125,14 @@ function get_requested_faqs ($parameter) {
 	else {
 		$args = array (
 			'post_type' => 'simple-faqs',
-			'orderby' => 'menu_order',
+			'orderby' => $orderby,
 			'order'	=> 'ASC',
 			'posts_per_page' => -1,
 			'tax_query' => array (
 				array(
 					'taxonomy' => 'faq_category',
 					'field' => 'slug',
-					'terms' => $parameter
+					'terms' => array($category)
 					)
 				)
 			);
@@ -109,7 +159,7 @@ function faq_style_simple($items) {
 	foreach ($items as $item) {
 		$output .= '<li class="simple-faq-item simple-faq-number-'.$item_number.'">';
 		$output .= '<h3>' . $item['title'] . '</h3>';
-		$output .= '<br />' . $item['content'] . '</li>';
+		$output .=  $item['content'] . '</li>';
 		$item_number++;
 	}
 	$output .= '</ul>';
@@ -145,7 +195,7 @@ function faq_style_bookmarks($items) {
 		$item_number++;
 	}
 
-	$output .= '<div class="simple-faqs-detail">';
+	$output .= '<div class="simple-faqs-bookmarks">';
 	//For the actual FAQ content below
 	$item_number = 1; //Reset item counter
 	foreach ($items as $item) {
@@ -167,7 +217,7 @@ function faq_style_accordion($items) {
 
 	echo "<script>
 	jQuery(document).ready(function($){
-		$( '#simple-faq-accordion' ).accordion({
+		$( '.simple-faq-accordion' ).accordion({
 			collapsible: true,
 			heightStyle: 'content'
 		});
@@ -175,7 +225,7 @@ function faq_style_accordion($items) {
 	</script>";
 
 	$item_number = 1;
-	$output = '<div id="simple-faq-accordion">';
+	$output = '<div class="simple-faq-accordion">';
 	foreach ($items as $item) {
 		$output .= '<h3>';
 		$output .= $item['title'];

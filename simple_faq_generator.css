@@ -1,0 +1,9 @@
+#faq-dialog { }
+#faq-dialog div{ padding: 5px 0; height: 20px;}
+#faq-dialog label { display: block; float: left; margin: 0 8px 0 0; width: 80px; }
+#faq-dialog select, #faq-dialog input { display: block; float: left; width: 100px; padding: 3px 5px;}
+#faq-dialog select { width: 112px; }
+#faq-dialog #insert { display: block; line-height: 24px; text-align: center; margin: 10px 0 0 0; float: left; width: 100px;}
+
+
+i.mce-i-simple-faq { background-image: url('simple-faq-icon.jpg')}
