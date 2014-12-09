@@ -38,6 +38,10 @@ category (can be All or any category slug defined in your site)
 2. Can we use multiple shortcodes on the same page?
 Yes that is possible since version 2 of the plugin
 
+== Screenshots ==
+1. TinyMCE Editor button to launch Simple FAQ shortcode generator
+2. Shortcode generator
+
 
 == Changelog ==
 = 2.0 =
