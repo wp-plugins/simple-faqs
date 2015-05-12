@@ -2,8 +2,8 @@
 Contributors: speedito
 Tags: FAQ listing
 Requires at least: 3.7.1
-Tested up to: 4.0.1
-Stable tag: 2.0
+Tested up to: 4.2.1
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,11 +39,14 @@ category (can be All or any category slug defined in your site)
 Yes that is possible since version 2 of the plugin
 
 == Screenshots ==
-1. TinyMCE Editor button to launch Simple FAQ shortcode generator
-2. Shortcode generator
-
+1. screenshot-1.png 
+2. screenshot-2.png 
 
 == Changelog ==
+= 2.1 =
+Added new skins
+Solved the shortcode generator issue
+
 = 2.0 =
 Added shortcode generator
 Now able to have multiple shortcodes on the same page

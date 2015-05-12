@@ -56,7 +56,7 @@ tinyMCEPopup.onInit.add(ButtonDialog.init, ButtonDialog);
 				<select name="faq-style" id="faq-style" size="1">
 					<option value="Accordion" selected="selected">Accordion</option>
 					<option value="Simple">Simple</option>
-					<option value="Bookmark">Bookmark</option>
+					<option value="Bookmarks">Bookmark</option>
 				</select>
 			</div>
 			<div>
@@ -71,7 +71,10 @@ tinyMCEPopup.onInit.add(ButtonDialog.init, ButtonDialog);
 				<label for="faq-skin">Skin</label>
 				<select name="faq-skin" id="faq-skin" size="1">
 					<option value="none" selected="selected">None</option>
-					<option value="Dark">Dark</option>
+					<option value="Black">Black</option>
+					<option value="Green">Green</option>
+					<option value="Blue">Blue</option>
+					<option value="Red">Red</option>
 				</select>
 			</div>
 			<div>

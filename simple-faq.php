@@ -3,7 +3,7 @@
  * Plugin Name: Simple FAQs
  * Plugin URI: http://wordpress.org/plugins/simple-faqs/
  * Description: FAQ plugin to allow creating and showing FAQ easily on Wordpress website
- * Version: 2.0
+ * Version: 2.1
  * Author: Waqas Ahmed
  * Author URI: http://speedsoftsol.com
  * License: GPL2
@@ -68,11 +68,17 @@ function render_faqs( $atts ) {
 
 	$simple_faq_skin = strtolower($skin);
 	if (isset($simple_faq_skin) && $simple_faq_skin != "none") {
-		if ($simple_faq_skin == "dark") {
-			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/dark.css', __FILE__ )  );
+		if ($simple_faq_skin == "black") {
+			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/black.css', __FILE__ )  );
 		}
-		elseif ($simple_faq_skin == "light") {
-			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/light.css', __FILE__ )  );
+		elseif ($simple_faq_skin == "green") {
+			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/green.css', __FILE__ )  );
+		}
+		elseif ($simple_faq_skin == "blue") {
+			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/blue.css', __FILE__ )  );
+		}
+		elseif ($simple_faq_skin == "red") {
+			wp_enqueue_style( 'simple-faq-skin', plugins_url( 'skins/red.css', __FILE__ )  );
 		}
 	}
 	$items = get_requested_faqs($category, $order);
