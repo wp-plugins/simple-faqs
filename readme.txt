@@ -43,6 +43,9 @@ Yes that is possible since version 2 of the plugin
 2. screenshot-2.png 
 
 == Changelog ==
+= 2.2 =
+Added new skins
+
 = 2.1 =
 Added new skins
 Solved the shortcode generator issue
